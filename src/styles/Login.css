@@ -1,0 +1,9 @@
+#components-form-demo-normal-login .login-form {
+    width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+    float: left;
+}
+#components-form-demo-normal-login .login-form-button {
+    width: 100%;
+}
