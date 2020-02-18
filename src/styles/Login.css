@@ -1,9 +1,15 @@
-#components-form-demo-normal-login .login-form {
-    width: 300px;
-}
-#components-form-demo-normal-login .login-form-forgot {
-    float: left;
-}
-#components-form-demo-normal-login .login-form-button {
-    width: 100%;
+/*#components-form-demo-normal-login .login-form {*/
+/*    width: 100px;*/
+/*}*/
+/*#components-form-demo-normal-login .login-form-forgot {*/
+/*    float: right;*/
+/*}*/
+/*#components-form-demo-normal-login .login-form-button {*/
+/*    !*width: 100%;*!*/
+/*}*/
+
+.ant-form.login-form,
+.login-form{
+    width: 400px;
+    margin: 0 auto;
 }

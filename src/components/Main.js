@@ -5,9 +5,9 @@ import Login from "./Login"
 class Main extends Component {
     render() {
         return (
-            <div>
-                <Register/>
-                <Login/>
+            <div className="main">
+                <Register />
+                <Login />
             </div>
         );
     }

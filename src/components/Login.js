@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 
 class NormalLoginForm extends Component {
     handleSubmit = e => {
@@ -37,17 +37,9 @@ class NormalLoginForm extends Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    {getFieldDecorator('remember', {
-                        valuePropName: 'checked',
-                        initialValue: true,
-                    })(<Checkbox>Remember me</Checkbox>)}
-                    <a className="login-form-forgot" href="">
-                        Forgot password
-                    </a>
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
                 </Form.Item>
             </Form>
         );

@@ -1,9 +1,9 @@
 .register-form {
     width: 800px;
-    margin-top: 100px;
     margin-left: 50px;
 }
 
-.register-button{
-    text-align: center;
-}
+/*.register-button{*/
+/*    text-align: center;*/
+/*    margin: 0 auto;*/
+/*}*/

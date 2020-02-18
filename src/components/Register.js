@@ -13,32 +13,26 @@ const { Option } = Select;
 
 const residences = [
     {
-        value: 'zhejiang',
-        label: 'Zhejiang',
+        value: 'Place 1',
+        label: 'Street 1',
         children: [
             {
-                value: 'hangzhou',
-                label: 'Hangzhou',
-                children: [
-                    {
-                        value: 'xihu',
-                        label: 'West Lake',
-                    },
-                ],
+                value: 'Apt1',
+                label: 'Apt 1',
             },
         ],
     },
     {
-        value: 'jiangsu',
-        label: 'Jiangsu',
+        value: 'Place 2',
+        label: 'Street 2',
         children: [
             {
-                value: 'nanjing',
-                label: 'Nanjing',
+                value: 'Building1',
+                label: 'Building 1',
                 children: [
                     {
-                        value: 'zhonghuamen',
-                        label: 'Zhong Hua Men',
+                        value: 'Apt2',
+                        label: 'Apt 2',
                     },
                 ],
             },
@@ -109,17 +103,10 @@ class RegistrationForm extends Component {
                 },
             },
         };
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-        })(
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>,
-        );
+
 
         return (
-            <Form className="register-form" onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit} className="register-form">
                 <Form.Item label="E-mail">
                     {getFieldDecorator('email', {
                         rules: [
@@ -174,9 +161,9 @@ class RegistrationForm extends Component {
                         rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                     })(<Input />)}
                 </Form.Item>
-                <Form.Item label="Habitual Residence">
+                <Form.Item label="Apartment Number">
                     {getFieldDecorator('residence', {
-                        initialValue: ['zhejiang', 'hangzhou', 'xihu'],
+                        initialValue: ['Place1', 'Place2', 'Place3'],
                         rules: [
                             { type: 'array', required: true, message: 'Please select your habitual residence!' },
                         ],
@@ -185,10 +172,10 @@ class RegistrationForm extends Component {
                 <Form.Item label="Phone Number">
                     {getFieldDecorator('phone', {
                         rules: [{ required: true, message: 'Please input your phone number!' }],
-                    })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
+                    })(<Input style={{ width: '100%' }} />)}
                 </Form.Item>
-                <Form.Item {...tailFormItemLayout}>
-                    <Button className="register-button" type="primary" htmlType="submit">
+                <Form.Item>
+                    <Button type="primary" htmlType="submit">
                         Register
                     </Button>
                 </Form.Item>
