@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import Register from "./Register"
-import Login from "./Login"
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Discussion from "./Discussion";
+import Home from "./Home";
 
 class Main extends Component {
     render() {
         return (
             <div className="main">
-                <Register />
-                <Login />
+                <Switch>
+                    <Route path="/discussion" component={Discussion}/>
+                    <Route path="/home" component={Home}/>
+                </Switch>
             </div>
         );
     }

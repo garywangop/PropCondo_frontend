@@ -10,6 +10,12 @@
 
 .ant-form.login-form,
 .login-form{
-    width: 400px;
-    margin: 0 auto;
+    width: 50%;
+    height: 300px;
+    /*margin: 0 auto;*/
+    margin-left: 100px;
+}
+
+.login-text{
+    float: left;
 }
