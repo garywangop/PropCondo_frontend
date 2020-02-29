@@ -6,6 +6,8 @@
 @import 'styles/Main.css';
 @import 'styles/Home.css';
 @import 'styles/Discussion.css';
+@import 'styles/DashBoard.css';
+@import 'styles/Calender.css';
 
 body {
   margin: 0;
