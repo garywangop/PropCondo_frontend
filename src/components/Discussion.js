@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
+import {COMMENT} from '../constants';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -7,12 +8,44 @@ const { SubMenu } = Menu;
 class Discussion extends Component {
     state = {
         collapsed: false,
+        comments: [],
     };
 
     onCollapse = collapsed => {
         console.log(collapsed);
         this.setState({ collapsed });
     };
+
+    getPost() {
+        fetch(`${COMMENT}/comments`, {
+            method: 'GET',
+            headers: {
+                // Accept: `*/*`,
+                // Accept-Encoding: `gzip, deflate`,
+                // Accept-Language: `en-US,en;q=0.9`,
+                // Cache-Control: `max-age=0`,
+                // Connection: `keep-alive`,
+                // Host: `34.237.218.116:8080`,
+                // Upgrade-Insecure-Requests: `1`,
+                // User-Agent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36`,
+            }
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Failed to load comments.');
+        }).then((data) => {
+            console.log(data);
+            this.setState({
+                comments: data ? data : [],
+            })
+        }).catch((error) => {
+            this.setState({
+                errorMessage: error.message,
+            })
+
+        })
+    }
 
     render() {
         return (
@@ -62,7 +95,7 @@ class Discussion extends Component {
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                            Bill is a cat.
+                            {this.getPost()}
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

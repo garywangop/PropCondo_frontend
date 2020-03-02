@@ -12,7 +12,7 @@ class DashBoard extends Component {
         return (
             <Tabs tabBarExtraContent={operations} className="main-tabs">
                 <TabPane tab="Home" key="1">
-                    Content of tab 1
+                    Notice section and user function bar in this tab
                 </TabPane>
                 <TabPane tab="Discussion" key="2">
                     <Discussion/>
