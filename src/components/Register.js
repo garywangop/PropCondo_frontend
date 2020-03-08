@@ -10,6 +10,7 @@ import {
     message,
 } from 'antd';
 import {REGISTER} from '../constants';
+import { Link, Redirect } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -111,14 +112,18 @@ class RegistrationForm extends Component {
                         admin: false,
                     }),
                 }).then((response) => {
+                    console.log('response: ', response);
+                    console.log('lastResponse: ', lastResponse);
                     lastResponse = response;
                     return response.text();
                 }, (error) => {
                     console.log('Error' + error);
                 }).then((text) => {
+                    console.log('lastResponse in second then:' , lastResponse);
                     if (lastResponse.ok) {
-                        message.success(text);
-                        this.props.history.push('/dashboard');
+                        message.success("Register successfully, please login");
+                        // this.props.history.push('/dashboard');
+                        // render={}
                     } else {
                         message.error(text);
                     }

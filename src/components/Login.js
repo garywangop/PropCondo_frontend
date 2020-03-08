@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
+import { REGISTER } from '../constants';
 
 class NormalLoginForm extends Component {
     handleSubmit = e => {
@@ -7,9 +8,26 @@ class NormalLoginForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                fetch(`${REGISTER}/${values.username}`, {
+                    method: 'GET',
+
+                }).then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Fail to login');
+                }, (error) => {
+                    console.log('Error');
+                }).then((text) => {
+                    console.log(text);
+                    if (text.password === values.password) {
+                        console.log('Able to login');
+                    }
+                });
+                console.log('Received values of form: last', values);
             }
         });
-    };
+    }
 
     render() {
         const { getFieldDecorator } = this.props.form;
