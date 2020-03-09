@@ -13,7 +13,6 @@ class Main extends Component {
         return (
             <div className="main">
                 <Switch>
-                    <Route path="/discussion" component={Discussion}/>
                     <Route path="/dashboard" component={DashBoard}/>
                     <Route path="/home" component={Home}/>
                     <Route render={getRoot}/>

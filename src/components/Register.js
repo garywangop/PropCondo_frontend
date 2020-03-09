@@ -122,10 +122,8 @@ class RegistrationForm extends Component {
                     console.log('lastResponse in second then:' , lastResponse);
                     if (lastResponse.ok) {
                         message.success("Register successfully, please login");
-                        // this.props.history.push('/dashboard');
-                        // render={}
                     } else {
-                        message.error(text);
+                        message.error('User exists, please login!');
                     }
                 });
             }

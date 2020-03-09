@@ -17,14 +17,17 @@ class NormalLoginForm extends Component {
                     }
                     throw new Error('Fail to login');
                 }, (error) => {
-                    console.log('Error');
+                    console.log('Error', error);
                 }).then((text) => {
                     console.log(text);
                     if (text.password === values.password) {
                         console.log('Able to login');
+                        message.success('Login success!');
+                        this.props.history.push('./dashboard');
+                    } else {
+                        message.error('Login error, please login again!');
                     }
                 });
-                console.log('Received values of form: last', values);
             }
         });
     }
