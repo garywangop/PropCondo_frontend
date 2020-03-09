@@ -7,7 +7,7 @@ class Home extends Component {
         return (
             <div className="home">
                 <Register/>
-                <Login history={this.props.history}/>
+                <Login history={this.props.history} handleLogin={this.props.handleLogin}/>
             </div>
         );
     }

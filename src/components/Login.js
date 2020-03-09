@@ -23,7 +23,8 @@ class NormalLoginForm extends Component {
                     if (text.password === values.password) {
                         console.log('Able to login');
                         message.success('Login success!');
-                        this.props.history.push('./dashboard');
+                        // this.props.history.push('./dashboard');
+                        this.props.handleLogin();
                     } else {
                         message.error('Login error, please login again!');
                     }

@@ -1,13 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Icon } from 'antd';
+import logo from '../assets/images/logo.svg';
 
-class TopBar extends Component {
-    render() {
-        return (
-            <div>
-                Topbar
-            </div>
-        );
-    }
+export default function Topbar(props) {
+    return (
+        <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">PropCondo</h1>
+            {
+                props.isLoggedIn ?
+                    <a onClick={props.handleLogout} className="logout">
+                        <Icon type="logout" />
+                        {' '}Logout
+                    </a> :
+                    null
+            }
+        </header>
+    );
 }
-
-export default TopBar;
