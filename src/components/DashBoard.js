@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Tabs, Button } from 'antd';
 import Discussion from "./Discussion";
 import Calendar from "./Calender";
+import Post from "./Post";
 
 const { TabPane } = Tabs;
 
@@ -22,6 +23,9 @@ class DashBoard extends Component {
                 </TabPane>
                 <TabPane tab="Documents" key="4">
                     Content of tab 4
+                </TabPane>
+                <TabPane tab="Community" key="5">
+                    <Post />
                 </TabPane>
             </Tabs>
         );
