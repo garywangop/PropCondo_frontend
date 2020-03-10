@@ -14,8 +14,8 @@ function getListData(value) {
                     switch (value.date()) {
                         case 1:
                             listData = [
-                                    { content: 'should be 2020-02-1' },
-                                ];
+                                { content: 'should be 2020-02-1' },
+                            ];
                             break;
                         case 2:
 
@@ -110,7 +110,7 @@ function dateCellRender(value) {
                     {/*<Badge status={item.type} text={item.content}/>*/}
 
 
-                        {item.content}
+                    {item.content}
 
                 </li>
             ))}
@@ -140,7 +140,7 @@ function monthCellRender(value) {
 function operation() {
     return (
         console.log('in operation function'),
-        <Reservation/>
+            <Reservation/>
     );
 }
 
@@ -157,7 +157,7 @@ class Calender extends Component {
 
     onSelect = value => {
         console.log('In onSelect: ');
-            console.log('In onSelect value: ', value);
+        console.log('In onSelect value: ', value);
         this.setState({
             value,
             selectedValue: value,
