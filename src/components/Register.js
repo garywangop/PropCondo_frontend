@@ -2,17 +2,12 @@ import React, {Component} from 'react';
 import {
     Form,
     Input,
-    Tooltip,
-    Icon,
     Cascader,
     Select,
     Button,
     message,
 } from 'antd';
 import {REGISTER} from '../constants';
-import { Link, Redirect } from 'react-router-dom';
-
-const { Option } = Select;
 
 const residences = [
     {

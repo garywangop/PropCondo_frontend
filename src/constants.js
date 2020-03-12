@@ -8,7 +8,16 @@ http://34.237.218.116:8080/PropCondo/api/residents/"username"    GET: get "usern
 http://34.237.218.116:8080/PropCondo/api/residents/      GET: get all users info
 */
 
+/*
+http://34.237.218.116:8080/PropCondo/api/reservations/getAll   GET: get all the reservations
+*/
+
 export const COMMENT = 'http://34.237.218.116:8080/PropCondo/api';
+
 export const POST = 'http://34.237.218.116:8080/PropCondo/api/posts';
 export const API_ROOT = 'http://34.237.218.116:8080/PropCondo/api';
 export const REGISTER = 'http://34.237.218.116:8080/PropCondo/api/residents';
+
+// export const POST = 'http://34.237.218.116:8080/PropCondo/api';
+export const RESERVATION = 'http://34.237.218.116:8080/PropCondo/api/reservations';
+
