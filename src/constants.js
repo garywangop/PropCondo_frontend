@@ -25,4 +25,3 @@ export const REGISTER = 'http://34.237.218.116:8080/PropCondo/api/residents';
 
 export const RESERVATION = 'http://34.237.218.116:8080/PropCondo/api/reservations';
 export const ADD_RESERVATION = 'http://34.237.218.116:8080/PropCondo/api/reservations/add';
-
