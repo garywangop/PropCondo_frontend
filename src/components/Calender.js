@@ -1,45 +1,117 @@
 import React, { Component } from 'react';
-import { Calendar, Badge } from 'antd';
+import { Calendar, Badge, Alert } from 'antd';
 import { RESERVATION } from '../constants';
+import {Reservation} from "./Reservation";
+import moment from 'moment';
 
 function getListData(value) {
     let listData;
-    switch (value.date()) {
-        case 8:
-            listData = [
-                { type: 'warning', content: 'This is warning event.' },
-                { type: 'success', content: 'This is usual event.' },
-            ];
-            break;
-        case 10:
-            listData = [
-                { type: 'warning', content: 'This is warning event.' },
-                { type: 'success', content: 'This is usual event.' },
-                { type: 'error', content: 'This is error event.' },
-            ];
-            break;
-        case 15:
-            listData = [
-                { type: 'warning', content: 'This is warning event' },
-                { type: 'success', content: 'This is very long usual event。。....' },
-                { type: 'error', content: 'This is error event 1.' },
-                { type: 'error', content: 'This is error event 2.' },
-                { type: 'error', content: 'This is error event 3.' },
-                { type: 'error', content: 'This is error event 4.' },
-            ];
-            break;
+    // console.log('value in switch:', value);
+    switch (value.year()) {
+        case 2020:
+            switch (value.month()) {
+                case 0:
+                    switch (value.date()) {
+                        case 1:
+                            listData = [
+                                    { content: 'should be 2020-02-1' },
+                                ];
+                            break;
+                        case 2:
+
+                        case 3:
+
+                        case 12:
+
+                        default:
+                    }
+                case 1:
+
+                case 2:
+
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                default:
+            }
         default:
     }
+    // switch (value.date()) {
+    //     case 8:
+    //         listData = [
+    //             { content: 'This is warning event.' },
+    //             { content: 'Tahis is usual event.' },
+    //         ];
+    //         console.log('listData: ', listData);
+    //         break;
+    //     case 10:
+    //         listData = [
+    //             { content: 'This is warning event.' },
+    //             { content: 'This is usual event.' },
+    //             { content: 'This is error event.' },
+    //         ];
+    //         break;
+    //     case 15:
+    //         listData = [
+    //             { content: 'This is warning event' },
+    //             { content: 'This is very long usual event。。....' },
+    //             { content: 'This is error event 1.' },
+    //             { content: 'This is error event 2.' },
+    //             { content: 'This is error event 3.' },
+    //             { content: 'This is error event 4.' },
+    //         ];
+    //         break;
+    //     default:
+    // }
+    // switch (value.month().date()) {
+    //     case 301:
+    //         listData = [
+    //                 { type: 'warning', content: 'This is warning event.' },
+    //                 { type: 'success', content: 'This is usual event.' },
+    //             ];
+    //             break;
+    //     case 2:
+    //         listData = [
+    //                 { type: 'warning', content: 'This is warning event.' },
+    //                 { type: 'success', content: 'This is usual event.' },
+    //                 { type: 'error', content: 'This is error event.' },
+    //             ];
+    //             break;
+    // }
     return listData || [];
 }
 
+function setTime(value) {
+    let time;
+    time = moment.set('month', 3).set('date', 1).set('hour', 13).set('minute', 20);
+
+    console.log('time:', time);
+    return time;
+}
+
 function dateCellRender(value) {
+    // console.log('value in dateCellRender: ', value.format('YYYY-MM-DD'));
+    // Render reservation data here
     const listData = getListData(value);
     return (
         <ul className="events">
             {listData.map(item => (
                 <li key={item.content}>
-                    <Badge status={item.type} text={item.content} />
+                    {/*<div>*/}
+                    {/*    Here is the reservation button*/}
+                    {/*</div>*/}
+                    {/*<Reservation/>*/}
+                    {/*<Badge status={item.type} text={item.content}/>*/}
+
+
+                        {item.content}
+
                 </li>
             ))}
         </ul>
@@ -56,10 +128,20 @@ function monthCellRender(value) {
     const num = getMonthData(value);
     return num ? (
         <div className="notes-month">
+            <div>
+                Here is the month cell render
+            </div>
             <section>{num}</section>
             <span>Backlog number</span>
         </div>
     ) : null;
+}
+
+function operation() {
+    return (
+        console.log('in operation function'),
+        <Reservation/>
+    );
 }
 
 //Calender is native and Calendar is imported from Antd
@@ -67,17 +149,20 @@ class Calender extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { info: [] }
+        this.state = { info: [],
+            value: moment(),
+            selectedValue: moment(),
+        }
     }
 
     onSelect = value => {
+        console.log('In onSelect: ');
+            console.log('In onSelect value: ', value);
         this.setState({
             value,
             selectedValue: value,
         });
-        console.log('In onSelect: ');
-        console.log('In onSelect value: ', this.value);
-        console.log('In onSelect  selectedValue: ', this.selectedValue);
+
     };
 
     getPost() {
@@ -120,9 +205,16 @@ class Calender extends Component {
 
     render() {
         let info = this.state.info;
+        const {selectedValue} = this.state;
         return (
             <div>
-                <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} onSelect={this.onSelect}/>,
+                {/*<Alert*/}
+                {/*    message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`}*/}
+                {/*/>*/}
+                <Reservation/>
+                <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} onSelect={this.onSelect}/>
+
+                ,
                 mountNode,
                 ---fromDB---
                 {info && info.map((item, index) => (
