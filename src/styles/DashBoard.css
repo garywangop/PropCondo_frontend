@@ -3,3 +3,40 @@
     margin-left: 100px;
     margin-right: 100px;
 }
+
+.dashboradright {
+    float: right;
+}
+
+.dashboradmain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:400px;
+}
+
+.dashboradmain .ant-btn{
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.dashboradmain .dashboradtitle{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    float: left;
+    margin-left: 10px;
+}
+
+
+
+img{
+    width: auto;
+    height: auto;
+    max-width:70%;
+    max-height: 40%;
+}
+
+
