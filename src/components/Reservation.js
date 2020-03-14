@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, TimePicker, message, DatePicker } from 'antd';
+import { Modal, Button, message, DatePicker } from 'antd';
 import moment from 'moment';
 import {ADD_RESERVATION} from '../constants';
 
