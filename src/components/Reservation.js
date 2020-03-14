@@ -1,28 +1,26 @@
 import React from 'react';
-import { Modal, Button, TimePicker, message } from 'antd';
+import { Modal, Button, TimePicker, message, DatePicker } from 'antd';
 import moment from 'moment';
 import {ADD_RESERVATION} from '../constants';
 
-// function onChange(time, timeString) {
-//     console.log(time, timeString);
-//     console.log('moment(time): ',moment(time));
-//     console.log('moment(timeString): ', moment(timeString));
-// }
+const { RangePicker } = DatePicker;
 
 export class Reservation extends React.Component {
-
-
     state = {
         ModalText: 'Content of the modal',
         visible: false,
         confirmLoading: false,
+        value: null,
+        startYear: 0,
+        startMonth: 0,
+        startDate: 0,
         startHour: 0,
-        StartMinute: 0,
+        startMinute: 0,
+        endYear: 0,
+        endMonth: 0,
+        endDate: 0,
         endHour: 0,
         endMinute: 0,
-        value: null,
-        startTime: false,
-        endTime: false,
     };
 
     showModal = () => {
@@ -37,35 +35,21 @@ export class Reservation extends React.Component {
             // confirmLoading: true,
             visible: false,
         });
-        const formData = new FormData();
-        formData.append('reservationId', '0');
-        formData.append('username', 'gary');
-        formData.append('studyRoomId', 'R1');
-        formData.append('startTime', `${this.startHour}${this.StartMinute}`);
-        formData.append('endTime', `${this.endHour}${this.endMinute}`);
         const test = {
             reservationId: '0',
             username: '0',
             studyRoomId: 'R1',
-            startTime: '123456789',
-            endTime: '234567890'
+            startTime: `${this.state.startYear}${this.state.startMonth}${this.state.startDate}${this.state.startHour}${this.state.startMinute}`,
+            endTime: `${this.state.endYear}${this.state.endMonth}${this.state.endDate}${this.state.endHour}${this.state.endMinute}`,
         }
         fetch(`${ADD_RESERVATION}`, {
             method: 'POST',
             // body: formData,
             // dataType: 'application/json',
             headers: {
-                'Content-Type': 'application/json'
-                // Accept: `*/*`,
-                // Accept-Encoding: `gzip, deflate`,
-                // Accept-Language: `en-US,en;q=0.9`,
-                // Cache-Control: `max-age=0`,
-                // Connection: `keep-alive`,
-                // Host: `34.237.218.116:8080`,
-                // Upgrade-Insecure-Requests: `1`,
-                // User-Agent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36`,
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(test),
 
         }).then((response) => {
             if (response.ok) {
@@ -87,50 +71,39 @@ export class Reservation extends React.Component {
         })
     };
 
-    onChange = (time, timeString) => {
-        console.log('time: ', time);
-        console.log('timeString: ', JSON.stringify(timeString));
-        //Get hour
-        console.log('timeString: ', JSON.stringify(timeString).slice(1,3));
-        // Get Minute
-        console.log('timeString: ', JSON.stringify(timeString).slice(4,6));
-        // this.setState({ value: timeString });
-        // console.log('value is: ', this.state.value);
-        if (this.startTime === true) {
-            this.setState({
-                startHour: JSON.stringify(timeString).slice(1,3),
-                startMinute: JSON.stringify(timeString).slice(4,6),
-                startTime: false,
-            });
-            console.log('In startTime');
+    onChange = (dates, dateStrings) => {
+        console.log('From: ', dates[0], ', to: ', dates[1]);
 
-        } else if (this.endTime === true) {
-            this.setState({
-                startHour: JSON.stringify(timeString).slice(1,3),
-                startMinute: JSON.stringify(timeString).slice(4,6),
-                endTime: false,
-            });
-            console.log('In endTime');
-        } else {
-            console.log('nothing happened');
-        }
+        console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
+        //From:  2020/03/10 19:01 , to:  2020/03/11 19:01
+        // start time:
+        console.log('From time year: ', dateStrings[0].slice(0, 4));
+        console.log('From month: ', dateStrings[0].slice(5, 7));
+        console.log('From date: ', dateStrings[0].slice(8, 10));
+        console.log('From hour: ', dateStrings[0].slice(11, 13));
+        console.log('From month: ', dateStrings[0].slice(14));
+        // end time:
+        console.log('From time year: ', dateStrings[1].slice(0, 4));
+        console.log('From month: ', dateStrings[1].slice(5, 7));
+        console.log('From date: ', dateStrings[1].slice(8, 10));
+        console.log('From hour: ', dateStrings[1].slice(11, 13));
+        console.log('From month: ', dateStrings[1].slice(14));
 
-    }
-
-    startChange = () => {
-        console.log('in start change now');
         this.setState({
-            startTime: true,
+            startYear: dateStrings[0].slice(0, 4),
+            startMonth: dateStrings[0].slice(5, 7),
+            startDate: dateStrings[0].slice(8, 10),
+            startHour: dateStrings[0].slice(11, 13),
+            startMinute: dateStrings[0].slice(14),
+            endYear: dateStrings[1].slice(0, 4),
+            endMonth: dateStrings[1].slice(5, 7),
+            endDate: dateStrings[1].slice(8, 10),
+            endHour: dateStrings[1].slice(11, 13),
+            endMinute: dateStrings[1].slice(14),
         });
-
-    }
-
-    endChange = () => {
-        console.log('in end change now');
-        this.setState({
-            endTime: true,
-        });
-
+        console.log('Check state: ', this.state.endDate);
+        const starttime = this.state.startYear + this.state.startMonth;
+        console.log('Check startTime: ', starttime);
     }
 
     handleCancel = () => {
@@ -141,7 +114,8 @@ export class Reservation extends React.Component {
     };
 
     render() {
-        const { visible, confirmLoading, ModalText } = this.state;
+        const { visible, confirmLoading} = this.state;
+
         return (
             <div>
                 <Button type="primary" onClick={this.showModal}>
@@ -155,16 +129,15 @@ export class Reservation extends React.Component {
                     confirmLoading={confirmLoading}
                     onCancel={this.handleCancel}
                 >
-
-                    <li>
-                        <ul>
-                            <li>From： <TimePicker use24Hours format="hh:mm" startChange={this.startChange} onChange={this.onChange} value={this.state.value}/></li>
-                        </ul>
-                        <ul>
-                            <li>To： <TimePicker use24Hours format="hh:mm" endChange={this.endChange} onChange={this.onChange}/></li>
-                        </ul>
-                    </li>
-
+                    <RangePicker
+                        ranges={{
+                            Today: [moment(), moment()],
+                            'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        }}
+                        showTime={{ format: 'HH:mm' }}
+                        format="YYYY/MM/DD HH:mm"
+                        onChange={this.onChange}
+                    />
                 </Modal>
             </div>
         );
