@@ -16,6 +16,10 @@ class Discussion extends Component {
         this.setState({ collapsed });
     };
 
+    componentDidMount() {
+        this.getPost();
+    }
+
     getPost() {
         fetch(`${COMMENT}/comments`, {
             method: 'GET',
@@ -95,7 +99,7 @@ class Discussion extends Component {
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                            {this.getPost()}
+                            {/*{this.getPost()}*/}
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
