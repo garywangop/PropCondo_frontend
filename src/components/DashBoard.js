@@ -3,6 +3,9 @@ import { Tabs, Button } from 'antd';
 import Discussion from "./Discussion";
 import Calendar from "./Calender";
 import Post from "./Post";
+import Discussionlogo from '../assets/images/discussion.svg';
+import Reservationlogo from '../assets/images/reservation.svg';
+
 
 const { TabPane } = Tabs;
 
@@ -27,15 +30,20 @@ class DashBoard extends Component {
             <Tabs tabBarExtraContent={operations} className="main-tabs"
                 activeKey={this.state.activeTab} onChange={this.changeTab}>
                 <TabPane tab="Home" key="1">
-                    <div>
-                        welcome back!
-                        <div>
-                            <Button type="default" size="large" onClick={() => this.changeTab("2")}>
-                                Discussion
-                            </Button>
-                            <Button type="default" size="large" onClick={() => this.changeTab("3")}>
-                                Reservation
-                            </Button>
+                    <div className="dashboradmain">
+                        <div className="dashboradright">
+                            <h2 className="dashboradtitle">welcome back!</h2>
+                            <h4>________________________________________________________________________________</h4>
+                            <div>
+                                <Button type="default" size="large" onClick={() => this.changeTab("2")}>
+                                    <img src={Discussionlogo} />
+                                    <li>Discussion</li>
+                                </Button>
+                                <Button type="default" size="large" onClick={() => this.changeTab("3")}>
+                                    <img src={Reservationlogo} />
+                                    <li>Reservation</li>
+                                </Button>
+                            </div>
                         </div>
                     </div>
 
