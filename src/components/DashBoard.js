@@ -5,6 +5,7 @@ import Calendar from "./Calender";
 import Post from "./Post";
 import Discussionlogo from '../assets/images/discussion.svg';
 import Reservationlogo from '../assets/images/reservation.svg';
+import '../styles/DashBoard.css';
 
 
 const { TabPane } = Tabs;
@@ -36,11 +37,11 @@ class DashBoard extends Component {
                             <h4>________________________________________________________________________________</h4>
                             <div>
                                 <Button type="default" size="large" onClick={() => this.changeTab("2")}>
-                                    <img src={Discussionlogo} />
+                                    <img src={Discussionlogo} className='Image_format'/>
                                     <li>Discussion</li>
                                 </Button>
                                 <Button type="default" size="large" onClick={() => this.changeTab("3")}>
-                                    <img src={Reservationlogo} />
+                                    <img src={Reservationlogo} className='Image_format'/>
                                     <li>Reservation</li>
                                 </Button>
                             </div>
