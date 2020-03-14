@@ -4,6 +4,10 @@
   pointer-events: none;
 }
 
+header {
+    padding: 0;
+}
+
 .App-title {
   color: #61dafb;
   font-size: 24px;
