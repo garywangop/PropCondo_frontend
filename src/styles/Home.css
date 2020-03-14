@@ -1,15 +1,19 @@
-.home{
-    display: flex;
-    /*width: 500px;*/
-    margin-top: 100px;
+.home {
+  display: flex;
+  /*width: 500px;*/
+  /* margin-top: 100px;
+  padding: 20px 80px; */
+  width: 850px;
+  justify-content: space-between;
+  margin: 30px auto;
 }
 
-.home-register{
-    width: 500px;
-}
+/* .home-register {
+  width: 500px;
+} */
 
-.ant-form,
-.home-login{
-    width: 300px;
-    margin-right: 100px;
-}
+/* .ant-form,
+.home-login {
+  width: 300px;
+  margin-right: 100px;
+} */

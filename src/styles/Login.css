@@ -8,14 +8,30 @@
 /*    !*width: 100%;*!*/
 /*}*/
 
-.ant-form.login-form,
-.login-form{
-    width: 50%;
-    height: 300px;
-    /*margin: 0 auto;*/
-    margin-left: 100px;
+/* .ant-form.login-form,
+.login-form {
+  width: 50%;
+  height: 300px;
+  margin-left: 100px;
+} */
+
+.login-text {
+  font-family: "Open Sans Condensed";
+  font-size: 30px;
+  font-weight: 900;
 }
 
-.login-text{
-    float: left;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 250px;
+  float: left;
+  margin-left: 50px;
+}
+.login-form.ant-form-item {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
 }

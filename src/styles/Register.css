@@ -1,8 +1,39 @@
 .register-form {
-    width: 800px;
-    margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 250px;
+  float: left;
+  margin-left: 50px;
+}
+.register-text {
+  font-family: "Open Sans Condensed";
+  font-size: 30px;
+  font-weight: 900;
 }
 
+.ant-form-item {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.register-form .ant-form-item-label {
+  margin-right: 50px;
+  position: fixed;
+  float: left;
+}
+.ant-form-item-control {
+  position: relative;
+  width: 250px;
+  margin-left: 150px;
+}
+
+.ant-btn-primary {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 600;
+}
 
 /*.register-button{*/
 /*    text-align: center;*/
